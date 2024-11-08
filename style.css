@@ -931,3 +931,20 @@ footer .copyright {
     }
 }
 
+
+
+@media (max-width: 768px) {
+    .profile-photo {
+          width: 150px;  
+          height: 150px; 
+          border-radius: 50%;
+          object-fit: cover;
+}
+}
+@media (max-width: 767px) {
+    .home-img img {
+        width: 100px; /* Adjust for mobile screens */
+        height: 100px; /* Keep the height same as width for a circle */
+    }
+}
+
