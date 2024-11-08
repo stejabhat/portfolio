@@ -916,3 +916,9 @@ footer .copyright {
         padding: 1.5rem 3%;
     }
 }
+@media (max-width: 768px) {
+    .profile-photo {
+        width: 150px;  
+        height: 150px; 
+    }
+}
