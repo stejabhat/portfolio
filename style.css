@@ -918,8 +918,10 @@ footer .copyright {
 }
 @media (max-width: 768px) {
     .profile-photo {
-        width: 150px;  
-        height: 150px; 
-    }
+          width: 150px;  
+          height: 150px; 
+          border-radius: 50%;
+          object-fit: cover;
+}
 }
 
