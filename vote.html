@@ -1,0 +1,135 @@
+<!-- vote.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .vote-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #140d0b;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        h2, h3 {
+            color: #fff6f6;
+        }
+
+        .screenshots img {
+            width: 100%;
+            max-width: 600px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .screenshots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .screenshot-description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .github-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .github-link a:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="vote-container">
+        <h2>Online Voting System</h2>
+        <p>The Online Voting System is a web application that allows users to vote in an election or poll securely and efficiently.</p>
+        
+        <!-- Screenshots Section -->
+        <div class="screenshots">
+            <h3>Screenshots</h3>
+            <div class="screenshot-description">
+                <img src="images/voting/register.png" alt="Registration Screen">
+                <p>Registration page for new voters to create an account and participate in elections.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/login.png" alt="Login Screen">
+                <p>Login screen where registered voters can securely sign in to access the voting platform.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/add_election.png" alt="Add Election Screen">
+                <p>The election creation page where administrators can add a new election to the platform.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/election_details.png" alt="Election Details">
+                <p>Election details screen, showing information about the current election, including candidates and voting status.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/add_candidate.png" alt="Add Candidate">
+                <p>Screen where administrators can add candidates to a specific election.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/befor_vote.png" alt="Before Voting">
+                <p>The page users see before casting their vote, showing a summary of the election.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/vote.png" alt="Vote Selection Screen">
+                <p>Voting page where users cast their votes for the candidates or options they support.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images/voting/result.png" alt="Results Page">
+                <p>Results page displaying the outcome of the election, including the number of votes each candidate received.</p>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <!-- <div class="github-link">
+            <h3>Source Code</h3>
+            <a href="https://github.com/yourusername/voting_system" target="_blank">View on GitHub</a>
+        </div> -->
+
+        <!-- Detailed Description -->
+        <div class="project-description">
+            <h3>Project Description</h3>
+            <p>The Online Voting System is designed to provide a secure and efficient way for voters to cast their votes online. It includes features like user authentication, real-time vote counting, and transparent result display. The system ensures the privacy of voters and the integrity of the election process.</p>
+        </div>
+
+        <!-- Frontend and Backend -->
+        <div class="project-description">
+            <h3>Frontend and Backend Technologies Used</h3>
+            <p><strong>Frontend:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Backend:</strong> PHP, MySQL</p>
+            <p><strong>Database:</strong> SQLite</p>
+            <p><strong>development environment</strong> XAMPP</p>
+        </div>
+    </div>
+</body>
+</html>

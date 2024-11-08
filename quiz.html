@@ -1,0 +1,111 @@
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz Game</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0000bd;
+            margin: 0;
+            padding: 0;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #140d0b;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        h2, h3 {
+            color: #fff6f6;
+        }
+
+        .screenshots {
+            display: flex;
+            flex-direction: column; /* Stack images vertically */
+            align-items: center; /* Center images horizontally */
+            gap: 10px;
+        }
+
+        .screenshots img {
+            width: 100%;
+            max-width: 600px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+
+        .screenshot-description {
+            display: flex;
+            flex-direction: column; /* Stack image and description vertically */
+            align-items: center; /* Center align the image and description */
+        }
+
+        .github-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .github-link a:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Interactive Quiz Game</h2>
+        <p>The Interactive Quiz Game is a web-based application designed to test users' knowledge on various topics.</p>
+        <p>Frontend: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Backend: <br> HTML &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; Django<br> CSS <br> Javascript</p>
+        
+        <!-- Screenshots Section -->
+        <div class="screenshots">
+            <div class="screenshot-description">
+                <img src="images\quizz\welcome.png" alt="Welcome Screen">
+                <p>Welcome screen where users can decide whether to start the quiz or exit.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images\quizz\quiz.png" alt="Quiz Question">
+                <p>Quiz interface displaying multiple-choice questions with a countdown timer.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images\quizz\result_i.png" alt="Intermediate Results">
+                <p>Intermediate results after answering each question, showing correct/incorrect answers.</p>
+            </div>
+            <div class="screenshot-description">
+                <img src="images\quizz\result_f.png" alt="Final Results">
+                <p>Final results screen displaying the total score and performance analysis.</p>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="github-link">
+            <h3>Source Code</h3>
+            <a href="https://github.com/stejabhat/python_project/tree/main/quiz" target="_blank">View on GitHub</a>
+        </div>
+
+        <!-- Detailed Description -->
+        <div class="project-description">
+            <h3>Project Description</h3>
+            <p>This project allows users to play quiz games, with multiple categories and varying levels of difficulty. Users can view their scores after each quiz, which helps to make learning fun and interactive.</p>
+        </div>
+    </div>
+</body>
+</html>
