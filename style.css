@@ -237,19 +237,22 @@ span {
     }
 }
 @keyframes words {
-    0%, 20% {
+    0%, 17% {
         content: 'Learner';
     }
-    21%, 40% {
+    18%, 34% {
         content: 'Full Stack Developer';
     }
-    41%, 60% {
-        content: 'Aspiring Data Scientist';
+    35%, 51% {
+        content: 'Curious Data Scientist';
     }
-    61%, 80% {
-        content: 'Photographer';
+    52%, 68% {
+        content: 'App Developer';
     }
-    81%, 100% {
+    69%, 85% {
+        content : 'ML Engineer'
+    }
+    86%, 100% {
         content: 'Writer';
     }
 }
