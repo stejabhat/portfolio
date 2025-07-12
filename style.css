@@ -238,7 +238,7 @@ span {
 }
 @keyframes words {
     0%, 20% {
-        content: 'Learner';
+        content: 'App Developer';
     }
     21%, 40% {
         content: 'Full Stack Developer';
@@ -247,10 +247,10 @@ span {
         content: 'Curious Data Scientist';
     }
     61%, 80% {
-        content: 'App Developer';
+        content: 'ML Engineer';
     }
     81%, 100% {
-        content : 'ML Engineer'
+        content: 'Writer'
     }
 }
 @keyframes typing {
