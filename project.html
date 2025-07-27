@@ -1,191 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000; /* Light background for contrast */
-            height: 100vh; /* Full height of the viewport */
-            overflow: hidden; /* Prevent default scrollbar */
-        }
+  <meta charset="UTF-8">
+  <title>Projects by Domain</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+    }
 
-        .portfolio {
-            display: flex;
-            overflow-x: auto; /* Enables horizontal scrolling */
-            padding: 20px;
-            height: 100vh; /* Full height of the viewport */
-            scroll-snap-type: x mandatory; /* Snap scrolling */
-            box-sizing: border-box; /* Include padding in height */
-        }
+    .header {
+      padding: 20px;
+      text-align: center;
+      background-color: #111;
+    }
 
-        .project {
-            background: linear-gradient(135deg, #ff000096, #a70805); /* Gradient background */
-            color: #fff; /* White text for contrast */
-            margin: 15px; /* Space between projects */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-            flex: 0 0 250px; /* Fixed width for each project box */
-            height: 80%; /* Fill a percentage of the height of the parent container */
-            scroll-snap-align: start; /* Snap alignment */
-            transition: transform 0.3s, box-shadow 0.3s; /* Transition effects */
-            display: flex; /* Flex display for centering */
-            flex-direction: column; /* Column layout */
-            justify-content: space-between; /* Space out elements */
-        }
+    .portfolio {
+      display: flex;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+      height: 100vh;
+      justify-content: center; 
+    }
 
-        .project:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-        }
+    .project {
+      background: #1a1a1a;
+      color: #fff;
+      margin: 15px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      flex: 0 0 280px;
+      height: 70%;
+      justify-content: center;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #2c2c2c;
+    }
 
-        .project h3 {
-            margin: 10px; /* Space around the heading */
-        }
+    .project:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
 
-        .project-image {
-            width: 100%; /* Full width */
-            height: 200px; /* Fixed height for the image section */
-            background-size: contain; /* Ensure the entire image is visible */
-            background-position: center; /* Center the image */
-            border-top-left-radius: 10px; /* Rounded corners */
-            border-top-right-radius: 10px; /* Rounded corners */
-            background-repeat: no-repeat; /* Prevent image from repeating */
-            width:100%; 
-            height:200px; 
-            border-radius: 10px; 
-            object-fit: cover;
-        }
+    .project h3 {
+      padding: 15px 15px 0;
+      font-size: 1.4rem;
+      color: #00e5ff;
+      margin: 7px;
+    }
+
+    .project-image {
+    width: 90%;
+    margin: 0 auto; /* This centers the div horizontally */
+    border-radius: 10%;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    }
 
 
-        .project-description {
-            padding: 10px; /* Padding around the text */
-            flex-grow: 1; /* Allow the description to take up remaining space */
-        }
+    .project-description {
+      padding: 10px 15px;
+      font-size: 0.95rem;
+      color: #ccc;
+      flex-grow: 1;
+    }
 
-        .project-link {
-            text-align: center; /* Center the text */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-            color: #000; /* Black text for readability */
-            padding: 10px; /* Padding for the link */
-            border-radius: 5px; /* Rounded corners for the link */
-            text-decoration: none; /* Remove underline */
-            margin: 10px; /* Margin for button */
-            transition: background-color 0.3s; /* Smooth transition */
-            
-        }
+    .project-link {
+      display: block;
+      text-align: center;
+      background-color: #00e5ff;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 0;
+      margin: 10px 15px 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
 
-        .project-link:hover {
-            background-color: #fff; /* Full white on hover */
-            z-index: 25;
-        }
+    .project-link:hover {
+      background-color: #00bcd4;
+      color: #fff;
+    }
 
-        /* Scrollbar styles */
-        .portfolio::-webkit-scrollbar {
-            height: 8px; /* Height of the horizontal scrollbar */
-        }
+    .back {
+      padding: 10px;
+      text-align: center;
+    }
 
-        .portfolio::-webkit-scrollbar-thumb {
-            background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
-            border-radius: 10px; /* Rounded corners for the scrollbar thumb */
-        }
-
-        .portfolio::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1); /* Color of the scrollbar track */
-        }
-
-        .portfolio {
-            -ms-overflow-style: auto;  /* For Internet Explorer and Edge */
-            scrollbar-width: thin;  /* For Firefox */
-            scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Color for Firefox */
-        }
-    </style>
+    .back a {
+      color: #00bcd4;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-    <div class="portfolio">
-        <div class="project">
-            <h3>Interactive Quiz Game</h3>
-            <div class="project-image" style="background-image: url('https://i2.cinestaan.com/image-bank/640-360/149001-150000/149871.gif');"></div>
-            <div class="project-description">
-                <p>The Interactive Quiz Game is an engaging web-based application designed to test and enhance users' knowledge across various subjects.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Snake game</h3>
-            <div class="project-image" style="background-image: url('https://img.clipart-library.com/2/clip-animated-cartoon-gifs/clip-animated-cartoon-gifs-13.gif');"></div>
-            <div class="project-description">
-                <p>The classic Snake Game challenges players to control a growing snake, navigating a grid while consuming food to increase its length. Avoid collisions with walls and the snake's own body to win!</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Online voting system</h3>
-            <div class="project-image" style="background-image: url('https://media.tenor.com/Rzw8L7lRmkUAAAAM/heres-my-vote-danny-mcbride.gif');"></div>
-            <div class="project-description">
-                <p>An online voting system enables secure, real-time participation in elections. Users can cast their votes conveniently from anywhere, ensuring transparency and accessibility while maintaining the integrity of the voting process.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>to do list</h3>
-            <div class="project-image" style="background-image: url('https://media.tenor.com/v6AZF8B_TAIAAAAM/todolist-nothing.gif');"></div>
-            <div class="project-description">
-                <p>A To-Do List application helps users organize tasks by allowing them to create, edit, and delete items, set priorities, and track progress for better time management.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Smart waste management system</h3>
-            <div class="project-image" style="background-image: url('https://media.tenor.com/HmpHWNOb89QAAAAM/green-studioclip.gif');"></div>
-            <div class="project-description">
-                <p>A Smart Waste Management System that leverages OpenCV for real-time waste classification and monitoring, optimizing waste collection and promoting efficient recycling practices.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Machine Learning projects</h3>
-            <div class="project-image" style="background-image: url('https://media.tenor.com/4uu_Eb0vj40AAAAM/machine-learning-baby-crying.gif');"></div>
-            <div class="project-description">
-                <p>Machine Learning projects involve creating algorithms that enable computers to learn from data, making predictions or decisions without explicit programming, enhancing efficiency across various applications.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Short-Term Job Hub</h3>
-            <div class="project-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVAfXafDSVLy-GrpOw-LaJdfWjl5_8qZPig&s');"></div>
-            <div class="project-description">
-                <p>A Short-Term Job Hub connects employers with individuals seeking temporary work, facilitating quick placements in various industries and providing flexible job opportunities for diverse skill sets.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Contract Farming Platform</h3>
-            <div class="project-image" style="background-image: url('https://media.tenor.com/4dVrb-M0wV8AAAAM/this-is-real-farming-rich-benoit.gif');"></div>
-            <div class="project-description">
-                <p>This online platform connects farmers with businesses, enabling secure and transparent agreements for crop production, ensuring fair pricing, and promoting sustainable agricultural practices for mutual benefit.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Awarness on mental health</h3>
-            <div class="project-image" style="background-image: url('https://media.tenor.com/5qHZ-K2hIKYAAAAM/jazminantionette-mental-health.gif');"></div>
-            <div class="project-description">
-                <p>This initiative promotes understanding and education about mental health, aiming to reduce stigma, encourage open conversations, and provide resources for individuals seeking support and guidance.</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Explore the World</h3>
-            <div class="project-image" style="background-image: url('https://memes.memedrop.io/production/yLV173kR8k60/source.gif');"></div>
-            <div class="project-description">
-                <p>Discover breathtaking destinations, travel tips, and cultural insights to enhance your journeys. Join us in exploring the beauty and diversity of our planet!</p>
-            </div>
-            <a href="#" class="project-link">View Project</a>
-        </div>
-    </div>
+
+  <div class="header">
+    <h2 id="domainTitle">Projects</h2>
+  </div>
+
+  <div class="back">
+    <a href="index.html">← Back to Domains</a>
+  </div>
+
+  <div class="portfolio" id="projectContainer"></div>
+
+  <script>
+    const allProjects = [
+      // === APP DEVELOPMENT ===
+      { domain: "App Development", title: "AI Powered Safety Alert System", desc: "Detects threats in real time using AI & camera feed.", img: "https://static.vecteezy.com/system/resources/thumbnails/017/700/303/small/the-smartphone-and-the-bell-icon-show-notifications-of-new-messages-internet-application-notification-concept-cyberspace-communications-connected-inboxes-chats-messages-and-apps-photo.jpg" },
+      { domain: "App Development", title: "Calculator App", desc: "A beginner-friendly calculator app using Kotlin.", img: "https://cdn.dribbble.com/userupload/13811984/file/original-915fd98bde04cb4096a56834aa126725.png?resize=752x&vertical=center" },
+      { domain: "App Development", title: "Site Manager App", desc: "Manages tasks on construction sites, built during internship.", img: "https://www.rajstartup.com/productImage/Energy%20Management%20(1).jpg" },
+
+      // === FULL STACK ===
+      { domain: "Full Stack Development", title: "Journal", desc: "Daily note-taking full stack app with auth & storage.", img: "https://images.squarespace-cdn.com/content/v1/587e753a15d5db6a801d01c5/1486936443696-XR9K52XA80AJL2AOQTJ3/Journal-Keeping-19.jpg" },
+      { domain: "Full Stack Development", title: "Mental Health Awareness", desc: "Platform to spread awareness and resources on mental health.", img: "https://images.collegexpress.com/blog/general-guide-mental-health-students.jpg" },
+      { domain: "Full Stack Development", title: "Travel Guide", desc: "Location-based travel guide with dynamic recommendations.", img: "https://cdn.prod.website-files.com/67a6ba056d889c1e78426c59/67a6ba056d889c1e78428498_best%20travel%20guide%20websites%20cover.jpg" },
+
+      // === MACHINE LEARNING ===
+      { domain: "Machine Learning", title: "Emotion Analysis", desc: "Classifies emotional tone from speech or text.", img: "https://www.analyticssteps.com/backend/media/thumbnail/1719103/3217648_1641451869_Emotion%20AnalysisArtboard%201.jpg" },
+      { domain: "Machine Learning", title: "Daily Price Analysis", desc: "ML model that predicts price variations using historical data.", img: "https://img.freepik.com/premium-vector/business-graph-chart-diagram-financial-research-data-monitoring-market-analysis-success-statistic-illustration_257312-1385.jpg?w=360" },
+      { domain: "Machine Learning", title: "Orbit Type Prediction", desc: "Predicts satellite orbit category using classification models.", img: "https://c.ndtvimg.com/2024-04/i64n282_solar-system-generic-earth-orbt-generic-pixabay_625x300_09_April_24.jpeg" },
+
+      // === AI ===
+      { domain: "Artificial Intelligence", title: "AI Agent", desc: "Simulated AI agent that interacts with dynamic environments.", img: "https://www.computerworld.com/wp-content/uploads/2025/03/3846150-0-73905800-1743107351-shutterstock_2577839733.jpg?quality=50&strip=all" },
+      { domain: "Artificial Intelligence", title: "AI Alert System", desc: "Threat detection system with real-time AI-powered alerts.", img: "https://static.vecteezy.com/system/resources/thumbnails/017/700/303/small/the-smartphone-and-the-bell-icon-show-notifications-of-new-messages-internet-application-notification-concept-cyberspace-communications-connected-inboxes-chats-messages-and-apps-photo.jpg" },
+
+      // === DJANGO ===
+      { domain: "Django Projects", title: "Contract Farming System", desc: "Web-based contract management system for farmers and buyers.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpxpmr4F0O01MopvK-yOZaOhUmNVWWdfR-kQ&s" },
+      { domain: "Django Projects", title: "Short Term Job Hub", desc: "Platform to connect short-term job seekers with employers.", img: "https://t4.ftcdn.net/jpg/04/23/62/27/360_F_423622711_ffnWDYV4hGa1xhdeGHpKYWFDdzzxeYO9.jpg" },
+      { domain: "Django Projects", title: "Stock", desc: "Stock monitoring platform built with Django.", img: "https://media.istockphoto.com/id/1487894858/photo/candlestick-chart-and-data-of-financial-market.jpg?s=612x612&w=0&k=20&c=wZ6vVmbm4BV2JOePSnNNz-0aFVOJZ0P9nhdeOMGUg5I=" },
+      { domain: "Django Projects", title: "Journal", desc: "Note-taking web app using Django.", img: "https://images.squarespace-cdn.com/content/v1/587e753a15d5db6a801d01c5/1486936443696-XR9K52XA80AJL2AOQTJ3/Journal-Keeping-19.jpg" },
+
+      // === ACADEMIC ===
+      { domain: "Academic", title: "Short Term Job Hub", desc: "Academic project for connecting employers with freelancers.", img: "https://t4.ftcdn.net/jpg/04/23/62/27/360_F_423622711_ffnWDYV4hGa1xhdeGHpKYWFDdzzxeYO9.jpg" },
+      { domain: "Academic", title: "AI Powered Smart Alert System", desc: "Academic-level real-time threat detection AI system.", img: "https://static.vecteezy.com/system/resources/thumbnails/017/700/303/small/the-smartphone-and-the-bell-icon-show-notifications-of-new-messages-internet-application-notification-concept-cyberspace-communications-connected-inboxes-chats-messages-and-apps-photo.jpg" },
+
+      // === MISC INTERNSHIPS ===
+      { domain: "Miscellaneous", title: "Internship - Site Manager App", desc: "Intern project for managing on-site construction work.", img: "https://www.rajstartup.com/productImage/Energy%20Management%20(1).jpg" },
+      { domain: "Miscellaneous", title: "Internship - Orbit Type Prediction", desc: "Internship ML classification of orbital types.", img: "https://c.ndtvimg.com/2024-04/i64n282_solar-system-generic-earth-orbt-generic-pixabay_625x300_09_April_24.jpeg" },
+
+      // === MISC PYTHON ===
+      { domain: "Miscellaneous", title: "Snake Game", desc: "Classic snake game built in Python using Pygame.", img: "https://thepythoncode.com/media/articles/make-a-snake-game-using-pygame-in-python.jpg" },
+      { domain: "Miscellaneous", title: "Floppy Bird", desc: "A Flappy Bird clone made with Python.", img: "https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1704220670/catalog/1742250725371568128/grbi2riwgjt4mpvpnebc.jpg" },
+
+      // === MISC OTHERS ===
+      { domain: "Miscellaneous", title: "NBA Project", desc: "Analyzing NBA stats to predict team performance.", img: "https://d3lkc3n5th01x7.cloudfront.net/wp-content/uploads/2023/08/24223521/Next-best-action-AI.png" },
+      { domain: "Miscellaneous", title: "Todo List", desc: "A simple to-do list web app.", img: "https://st5.depositphotos.com/1510356/79444/i/450/depositphotos_794443936-stock-photo-top-view-workspace-blank-notebook.jpg" },
+      { domain: "Miscellaneous", title: "GitHub Portfolio", desc: "Explore all my projects on GitHub. <br/> <a href='https://github.com/stejabhat' target='_blank'>GitHub</a>", img: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", link: "https://github.com/stejabhat" }
+    ];
+
+    const container = document.getElementById("projectContainer");
+    const urlParams = new URLSearchParams(window.location.search);
+    const domain = urlParams.get('domain');
+    document.getElementById("domainTitle").textContent = domain ? `Projects in "${domain}"` : "All Projects";
+
+    allProjects.forEach(p => {
+      if (!domain || p.domain === domain) {
+        const div = document.createElement("div");
+        div.className = "project";
+        div.setAttribute("data-domain", p.domain);
+        div.innerHTML = `
+          <h3>${p.title}</h3>
+          <div class="project-image" style="background-image: url('${p.img}')"></div>
+          <div class="project-description"><p>${p.desc}</p></div>
+        `;
+        container.appendChild(div);
+      }
+    });
+  </script>
+  <script>
+  function adjustAlignment() {
+    const container = document.getElementById("projectContainer");
+    if (container.scrollWidth > container.clientWidth) {
+      container.style.justifyContent = "flex-start"; // Scrollable
+    } else {
+      container.style.justifyContent = "center"; // Center if not scrollable
+    }
+  }
+
+  window.addEventListener("load", adjustAlignment);
+  window.addEventListener("resize", adjustAlignment);
+</script>
+
+
 </body>
 </html>
