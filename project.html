@@ -1,124 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects by Domain</title>
+  <link rel="shortcut icon" type="image/svg+xml"
+    href="favicon.svg">
+  <link rel="icon" type="image/svg+xml"
+    href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
   <style>
-    body {
+    /* ========================================
+       LUXURY PROJECT PAGE STYLES
+       ======================================== */
+
+    /* CSS Variables - Dark Mode */
+    :root {
+      --bg-color: #0D0D0D;
+      --second-bg-color: #141414;
+      --text-color: #F5F5F5;
+      --text-grey: #A0A0A0;
+      --accent-color: #D4AF37;
+      --accent-light: #E8C75A;
+      --accent-glow: rgba(212, 175, 55, 0.4);
+      --font-heading: 'Playfair Display', 'Cinzel', serif;
+      --font-body: 'Lato', 'Open Sans', sans-serif;
+    }
+
+    /* CSS Variables - Light Mode */
+    [data-theme="light"] {
+      --bg-color: #FAF9EE;
+      --second-bg-color: #DCCFC0;
+      --text-color: #2D2D2D;
+      --text-grey: #555555;
+      --accent-color: #1F8FFF;
+      --accent-light: #4DA6FF;
+      --accent-glow: rgba(31, 143, 255, 0.3);
+    }
+
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: white;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .header {
-      padding: 20px;
-      text-align: center;
-      background-color: #111;
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .portfolio {
-      display: flex;
-      overflow-x: auto;
-      padding: 20px;
-      scroll-snap-type: x mandatory;
-      height: 100vh;
-      justify-content: center; 
-    }
-
-    .project {
-      background: #1a1a1a;
-      color: #fff;
-      margin: 15px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      flex: 0 0 280px;
-      height: 70%;
-      justify-content: center;
-      scroll-snap-align: start;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
+    /* Particle Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
       overflow: hidden;
-      border: 1px solid #2c2c2c;
     }
 
-    .project:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite ease-in-out;
     }
 
-    .project h3 {
-      padding: 15px 15px 0;
-      font-size: 1.4rem;
-      color: #00e5ff;
-      margin: 7px;
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+      }
+
+      25% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translateY(-200px) translateX(-30px);
+        opacity: 0.2;
+      }
+
+      75% {
+        transform: translateY(-150px) translateX(40px);
+        opacity: 0.4;
+      }
     }
 
-    .project-image {
-    width: 90%;
-    margin: 0 auto; /* This centers the div horizontally */
-    border-radius: 10%;
-    height: 180px;
-    background-size: cover;
-    background-position: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    flex-shrink: 0;
-    background-repeat: no-repeat;
-    }
-
-
-    .project-description {
-      padding: 10px 15px;
-      font-size: 0.95rem;
-      color: #ccc;
-      flex-grow: 1;
-    }
-
-    .project-link {
-      display: block;
+    /* Header */
+    .header {
+      position: relative;
+      padding: 4rem 5% 2rem;
       text-align: center;
-      background-color: #00e5ff;
-      color: #000;
-      font-weight: bold;
-      padding: 10px 0;
-      margin: 10px 15px 15px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background-color 0.3s;
+      background: linear-gradient(180deg, var(--second-bg-color) 0%, var(--bg-color) 100%);
+      z-index: 1;
     }
 
-    .project-link:hover {
-      background-color: #00bcd4;
-      color: #fff;
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
     }
 
+    .header h2 {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+      letter-spacing: 3px;
+      text-transform: capitalize;
+    }
+
+    .header h2 span {
+      color: var(--accent-color);
+    }
+
+    /* Back Button */
     .back {
-      padding: 10px;
       text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .back a {
-      color: #00bcd4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--accent-color);
       text-decoration: none;
-      font-size: 18px;
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding: 1rem 2rem;
+      border: 1px solid var(--accent-color);
+      border-radius: 50px;
+      transition: all 0.4s ease;
+    }
+
+    .back a:hover {
+      background: var(--accent-color);
+      color: var(--bg-color);
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: translateY(-3px);
+    }
+
+    .back a i {
+      transition: transform 0.3s ease;
+    }
+
+    .back a:hover i {
+      transform: translateX(-5px);
+    }
+
+    /* Portfolio Container */
+    .portfolio {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 2rem 5% 5rem;
+      position: relative;
+      z-index: 1;
+      min-height: 70vh;
+    }
+
+    /* Project Card */
+    .project {
+      background: linear-gradient(145deg, #1A1A1A 0%, #0D0D0D 100%);
+      color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      flex: 0 0 300px;
+      max-width: 320px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      position: relative;
+    }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .project:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
+      border-color: var(--accent-color);
+    }
+
+    .project:hover::before {
+      opacity: 1;
+    }
+
+    .project h3 {
+      padding: 1.5rem 1.5rem 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--text-color);
+      margin: 0;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .project:hover h3 {
+      color: var(--accent-color);
+    }
+
+    .project-image {
+      width: 90%;
+      margin: 1.2rem auto;
+      border-radius: 15px;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+      background-repeat: no-repeat;
+      transition: transform 0.4s ease;
+      border: 2px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .project:hover .project-image {
+      transform: scale(1.05);
+      border-color: var(--accent-color);
+    }
+
+    .project-description {
+      padding: 0.5rem 1.5rem 1.5rem;
+      font-size: 1.1rem;
+      color: var(--text-grey);
+      flex-grow: 1;
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-description p {
+      margin: 0;
+    }
+
+    .project-description a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .project-description a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+
+    /* Domain Tag */
+    .project::after {
+      content: attr(data-domain);
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 0.75rem;
+      color: var(--accent-color);
+      background: rgba(212, 175, 55, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-light);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid var(--accent-color);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--accent-color);
+      transition: all 0.4s ease;
+      margin-left: 1rem;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent-color);
+      color: var(--bg-color);
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: rotate(15deg);
+    }
+
+    .theme-toggle .fa-sun {
+      display: none;
+    }
+
+    [data-theme="light"] .theme-toggle .fa-moon {
+      display: none;
+    }
+
+    [data-theme="light"] .theme-toggle .fa-sun {
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h2 {
+        font-size: 2.5rem;
+      }
+
+      .project {
+        flex: 0 0 280px;
+        max-width: 300px;
+      }
+
+      .portfolio {
+        gap: 1.5rem;
+        padding: 1rem 3% 3rem;
+      }
     }
   </style>
 </head>
+
 <body>
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
 
   <div class="header">
     <h2 id="domainTitle">Projects</h2>
   </div>
 
   <div class="back">
-    <a href="index.html">← Back to Domains</a>
+    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
   </div>
 
   <div class="portfolio" id="projectContainer"></div>
 
   <script>
+    // Create particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 25;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        const size = Math.random() * 2 + 1;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    createParticles();
+
+    // ========================================
+    // THEME TOGGLE
+    // ========================================
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        if (newTheme === 'light') {
+          html.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        } else {
+          html.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+
+    // Project Data
     const allProjects = [
       // === APP DEVELOPMENT ===
       { domain: "App Development", title: "AI Powered Safety Alert System", desc: "Detects threats in real time using AI & camera feed.", img: "https://static.vecteezy.com/system/resources/thumbnails/017/700/303/small/the-smartphone-and-the-bell-icon-show-notifications-of-new-messages-internet-application-notification-concept-cyberspace-communications-connected-inboxes-chats-messages-and-apps-photo.jpg" },
@@ -166,36 +490,28 @@
     const container = document.getElementById("projectContainer");
     const urlParams = new URLSearchParams(window.location.search);
     const domain = urlParams.get('domain');
-    document.getElementById("domainTitle").textContent = domain ? `Projects in "${domain}"` : "All Projects";
+    document.getElementById("domainTitle").innerHTML = domain ? `Projects in <span>"${domain}"</span>` : "All Projects";
 
-    allProjects.forEach(p => {
-      if (!domain || p.domain === domain) {
+    // Filter and display projects
+    const filteredProjects = allProjects.filter(p => !domain || p.domain === domain);
+
+    if (filteredProjects.length === 0) {
+      container.innerHTML = '<p style="color: var(--text-grey); font-size: 1.5rem; text-align: center; grid-column: 1/-1;">No projects found for this domain.</p>';
+    } else {
+      filteredProjects.forEach((p, index) => {
         const div = document.createElement("div");
         div.className = "project";
         div.setAttribute("data-domain", p.domain);
+        div.style.animationDelay = (index * 0.1) + 's';
         div.innerHTML = `
           <h3>${p.title}</h3>
           <div class="project-image" style="background-image: url('${p.img}')"></div>
           <div class="project-description"><p>${p.desc}</p></div>
         `;
         container.appendChild(div);
-      }
-    });
-  </script>
-  <script>
-  function adjustAlignment() {
-    const container = document.getElementById("projectContainer");
-    if (container.scrollWidth > container.clientWidth) {
-      container.style.justifyContent = "flex-start"; // Scrollable
-    } else {
-      container.style.justifyContent = "center"; // Center if not scrollable
+      });
     }
-  }
-
-  window.addEventListener("load", adjustAlignment);
-  window.addEventListener("resize", adjustAlignment);
-</script>
-
-
+  </script>
 </body>
+
 </html>
